@@ -28,20 +28,15 @@ class Normal extends React.Component {
   }
 }
 
-const mapStateToProps = (state)=>{
-  return {}
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
     onclick: (e)=>{
       let target = e.target;
       if(target.tagName.toLowerCase()==='li'){
-        handleClick(target);
-        //dispatch(handleClick(target));
+        dispatch(handleClick(target));
       }
     }
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Normal);
+export default connect(null,mapDispatchToProps)(Normal);

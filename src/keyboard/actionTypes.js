@@ -1,11 +1,3 @@
 export const  CLICK_NUM = "CLICK/NUM";
-export const  CLICK_ADD = "CLICK/ADD";
-export const  CLICK_MINUS = "CLICK/MINUS";
-export const  CLICK_MULTIPLY = "CLICK/MULTIPLY";
-export const  CLICK_DIVIDE = "CLICK/DIVIDE";
-export const  CLICK_PERCENT = "CLICK/PERCENT";
-export const  CLICK_CLEAR = "CLICK/CLEAR";
-export const  CLICK_DELETE = "CLICK/DELETE";
-export const  CLICK_TOGGLE = "CLICK/TOGGLE";
-export const  CLICK_DOT = "CLICK/DOT";
-export const  CLICK_EQUAL = "CLICK/EQUAL";
+export const CLICK_MATH_OPERATOR = "CLICK/MATH-OPERATOR";
+export const CLICK_FUNC_OPERATOR = "CLICK/FUNC-OPERATOR";

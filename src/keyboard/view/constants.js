@@ -1,5 +1,5 @@
 export const normalKeyboard = [
-    {value:'CE',type:'operator clear-cur',},
+    {value:'CE',type:'operator clear',},
     {value:'%',type:'operator percent',},
     {value:'DEL',type:'operator delete',},
     {value:'÷',type:'math-operator divide',},
@@ -10,7 +10,7 @@ export const normalKeyboard = [
     {value:'4',type:'number',},
     {value:'5',type:'number',},
     {value:'6',type:'number',},
-    {value:'-',type:'math-operator minuse',},
+    {value:'-',type:'math-operator minus',},
     {value:'1',type:'number',},
     {value:'2',type:'number',},
     {value:'3',type:'number',},

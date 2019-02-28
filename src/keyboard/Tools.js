@@ -1,33 +1,21 @@
+import * as actions from './actions.js';
+
 const handleClick = (node)=>{
-  let text= node.innerText;
   if(node.classList.contains('number')){
-    console.log('number:'+text);
+
+    let text= node.innerText;
+    return actions.num(text);
+
   }else if(node.classList.contains('math-operator')){
+
     let operator = node.classList.value.replace(/math-operator/,'').replace(/^\s+|\s+$/g,'');
-    switch(operator){
-      case 'add':{
-        break;
-      }
-      case 'minus':{
-        break;
-      }
-      case 'divide':{
-        break;
-      }
-      case 'multiply':{
-        break;
-      }
-      case 'dot':{
-        break;
-      }
-      case 'equal':{
-        break;
-      }
-      default:break;
-    }
+    return actions.math(operator);
 
   }else if(node.classList.contains('operator')){
 
+    let operator = node.classList.value.replace(/operator/,'').replace(/^\s+|\s+$/g,'');
+    return actions.func(operator);
+    
   }
 }
 
