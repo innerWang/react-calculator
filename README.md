@@ -8,3 +8,4 @@
 
 * [] === [] 不成立，改用length===0判断为空数组
 
+* 部署到github pages时，键盘不显示，是由于 react router的原因吗？？？
