@@ -1,6 +1,6 @@
 import * as actions from './actions.js';
 
-const handleClick = (node)=>{
+export const handleClick = (node)=>{
   if(node.classList.contains('number')){
 
     let text= node.innerText;
@@ -19,5 +19,27 @@ const handleClick = (node)=>{
   }
 }
 
+const toPostFixArr = (inFixArr) =>{
+  let operatorArr = [];
+  let postFixArr = [];
+  let temp = '';
 
-export {handleClick};
+
+
+  return postFixArr;
+
+}
+
+
+const calPostFixArr = (postFixArr)=>{
+
+}
+
+export const calInFixExpression = (inFixArr)=>{
+  let postFixArr = toPostFixArr();
+  return  calPostFixArr(postFixArr);
+}
+
+
+
+

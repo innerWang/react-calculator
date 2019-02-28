@@ -1,24 +1,41 @@
 import * as actionTypes from './actionTypes.js';
 
 const reducer = (state,action)=>{
-  if(!state) return {str:[],result:''};
+  if(!state) return {str:[],result:'',lastOperatorIsEqual:false};
   switch(action.type){
     case actionTypes.CLICK_NUM:{
-      return {
-        ...state,
-        result : state.result + action.data
-      };
+      if((action.data === '.') && (state.result.indexOf('.') !== -1)) return state;
+      if(!state.lastOperatorIsEqual){
+        return {
+          ...state,
+          result : state.result === '' && action.data === '.'?'0.':(state.result+action.data),
+        };
+      }else{
+        return {
+          ...state,
+          result: action.data==='.'?'0.':action.data,
+          lastOperatorIsEqual:false
+        }
+      }
+      
     }
     case  actionTypes.CLICK_MATH_OPERATOR:{
       let arr = state.str;
-      arr.push(state.result)
+      if(arr.length === 0){
+        arr.push('0')
+      }else if(state.result === ''){
+        arr.pop();
+      }else{
+        arr.push(parseFloat(state.result)+'')
+      }
       switch(action.math_type){
         case 'add':{
           arr.push('+');
           return {
             ...state,
             str: arr ,
-            result:''
+            result:'',
+            lastOperatorIsEqual:false
           };
         }
         case 'minus':{
@@ -26,7 +43,8 @@ const reducer = (state,action)=>{
           return {
             ...state,
             str: arr ,
-            result:''
+            result:'',
+            lastOperatorIsEqual:false
           };
         }
         case 'divide':{
@@ -34,7 +52,8 @@ const reducer = (state,action)=>{
           return {
             ...state,
             str: arr ,
-            result:''
+            result:'',
+            lastOperatorIsEqual:false
           };
         }
         case 'multiply':{
@@ -42,7 +61,8 @@ const reducer = (state,action)=>{
           return {
             ...state,
             str: arr ,
-            result:''
+            result:'',
+            lastOperatorIsEqual:false
           };
         }
         case 'equal':{
@@ -52,8 +72,9 @@ const reducer = (state,action)=>{
           // 赋值temp
           return {
             ...state,
-            str:'',
-            result:temp
+            str:[],
+            result:temp,
+            lastOperatorIsEqual:true
           }; 
         }
         default:return state;
@@ -64,18 +85,17 @@ const reducer = (state,action)=>{
         case 'clear':{
           return {
             ...state,
-            str:'',
-            result:''
+            str:[],
+            result:'',
+            lastOperatorIsEqual:false
           };
         }
         case 'percent':{
           if(state.result === '') return state;
-          let arr = state.str;
-          arr.push(parseFloat(state.result) * 0.01);
           return {
             ...state,
-            str: arr,
-            result: ''
+            result: parseFloat(state.result) * 0.01+'',
+            lastOperatorIsEqual:false
           };
         }
         case 'delete':{
@@ -84,7 +104,8 @@ const reducer = (state,action)=>{
           temp.pop();
           return {
             ...state,
-            result:temp.join('')
+            result:temp.join(''),
+            lastOperatorIsEqual:false
           }
         }
         case 'toggle':{
@@ -92,7 +113,8 @@ const reducer = (state,action)=>{
           let temp = (0-parseFloat(state.result))+'';
           return {
             ...state,
-            result:temp
+            result:temp,
+            lastOperatorIsEqual:false
           };
         }
         default:return state;

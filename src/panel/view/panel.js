@@ -55,22 +55,15 @@ class Panel extends React.Component{
   }
 
   clickLeft = () => {
-    console.log('state: '+ this.state.e_right);
     this.setState({
       e_right: (parseInt(this.state.e_right)- 10)+'px'
     })
-
   }
 
   clickRight = ()=> {
-    
-    console.log('state: '+ this.state.e_right);
     this.setState({
       e_right: (parseInt(this.state.e_right)+ 10)+'px'
     })
-    console.log(this.node_str.offsetWidth)
-    console.log(this.node_str.offsetLeft)
-    console.log(this.node_wrap.offsetWidth)
   }
 
   render(){
