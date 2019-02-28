@@ -1,4 +1,6 @@
-import Normal from './normal.js'
-import Science from './science.js'
+import Normal from './view/normal.js';
+import Science from './view/science.js';
 
-export {Normal,Science} ;
+import reducer from './reducer.js';
+
+export {Normal,Science,reducer} ;
