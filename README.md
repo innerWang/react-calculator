@@ -23,3 +23,6 @@ process.env = {NODE_ENV: "production", PUBLIC_URL: "/react-calculator/build"}
 
  
 
+```js
+<Router basename={`${process.env.PUBLIC_URL}`}></Router>
+```

@@ -34,7 +34,7 @@ class App extends Component {
         <div className="App">
           <header>简易计算器</header>
           <Panel/>
-          <Router basename={`${process.env.PUBLIC_URL}`}>
+          <Router>
             <div>
               <div className="mode">
                 <Link to={`/normal`}><button className="normal cmode" onClick={this.onclick}>标准</button></Link>
@@ -42,9 +42,9 @@ class App extends Component {
                 <Link to={`/science`}><button className="science cmode" onClick={this.onclick}>科学</button></Link>
               </div>
               <Switch>
-                <Route path={`/normal/`}   component={Keyboards.Normal} />            
-                <Redirect path={`/`} exact={true} to={`/normal/`} />
-                <Redirect path={`/science/`} exact={true} to={`/normal/`} />
+                <Route path={`/normal`}   component={Keyboards.Normal} />            
+                <Redirect path={`/`} exact={true} to={`/normal`} />
+                <Redirect path={`/science`} exact={true} to={`/normal`} />
               </Switch>
             </div>
           </Router>
