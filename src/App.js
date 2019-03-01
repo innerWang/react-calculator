@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link,Redirect,Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Link,Redirect,Switch } from "react-router-dom";
 import {Provider}  from 'react-redux';
 import * as Keyboards from './keyboard/';
 import {Panel} from './panel/';
