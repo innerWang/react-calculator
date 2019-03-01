@@ -115,12 +115,48 @@ const calPostFix = postFix => {
         }
       }
     });
-    return result[0] + "";
+    return sciNotation(result[0]);
   } else {
     //不是数组
     return postFix;
   }
 };
+
+//将一个正数小数的小数位数进行截取
+const setWidth = (digit,n=5)=>{
+  return Math.round(digit * Math.pow(10,n))/Math.pow(10,n);
+} 
+
+//对数据进行科学转换
+const sciNotation = (digit) => {
+  let ret = 0;
+  // > 10^5 记为 1.234567e5
+  if(Math.abs(digit) > Math.pow(10,5)){
+    let power = Math.floor(Math.log(Math.abs(digit))/Math.log(10));
+    let base = Math.abs(digit)/Math.pow(10,power);
+    base = setWidth(base,7);
+    ret = digit>0 ? `${base}e${power}`:`-${base}e${power}`;
+  }else if(Math.abs(digit) < 1){
+    if((Math.abs(digit)+'').length > 10){
+      let base = setWidth(Math.abs(digit),8);
+      ret = digit>0 ? `${base}`:`-${base}`;
+    }else{
+      ret = digit +'';
+    } 
+  }else{
+    //9999.9999999
+    if((Math.abs(digit)+'').length > 12){
+     let base = setWidth(Math.abs(digit),5);
+     ret = digit>0 ? `${base}`:`-${base}`;
+    }else{
+      ret = digit+'';
+    }
+  }
+
+
+  return ret;
+}
+
 
 export const calInFixExpression = (inFixArr=[])=>{
   if(inFixArr.length ===0) return '';
@@ -128,3 +164,5 @@ export const calInFixExpression = (inFixArr=[])=>{
   let postFixArr = toPostFix(inFixArr);
   return  calPostFix(postFixArr);
 }
+
+

@@ -5,13 +5,18 @@ const reducer = (state,action)=>{
   if(!state) return {str:[],result:'',lastOperatorIsEqual:false};
   switch(action.type){
     case actionTypes.CLICK_NUM:{
+      //当前输入为'.' 且result中已经有'.' 则不做操作
       if((action.data === '.') && (state.result.indexOf('.') !== -1)) return state;
+      // result的长度已经达到10，则不做操作
+      if(state.result.length === 10) return state;
       if(!state.lastOperatorIsEqual){
+        //上一个操作符不是 =
         return {
           ...state,
           result : state.result === '' && action.data === '.'?'0.':(state.result+action.data),
         };
       }else{
+        //上一个操作符是 =
         return {
           ...state,
           result: action.data==='.'?'0.':action.data,
