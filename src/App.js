@@ -18,10 +18,10 @@ class App extends Component {
   }
 
   componentDidMount(){
-    const activeLink = window.location.pathname;
+    const activeLink = window.location.hash;
     console.log(activeLink)
     document.querySelectorAll('.cmode').forEach((node)=>{
-      if(node.classList.contains(activeLink.replace(/^\//,''))){
+      if(node.classList.contains(activeLink.match(/(normal)|(science)/) !== null)){
         node.classList.add('active');
       }
     })
