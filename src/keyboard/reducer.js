@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes.js';
-import {calInFixExpression} from './Tools.js';
+import {calInFixExpression,sciNotation} from './Tools.js';
 
 const reducer = (state,action)=>{
   if(!state) return {str:[],result:'',lastOperatorIsEqual:false};
@@ -97,7 +97,7 @@ const reducer = (state,action)=>{
           if(state.result === '') return state;
           return {
             ...state,
-            result: parseFloat(state.result) * 0.01+'',
+            result: sciNotation(parseFloat(state.result) * 0.01),
             lastOperatorIsEqual:false
           };
         }

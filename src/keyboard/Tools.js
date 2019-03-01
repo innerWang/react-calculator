@@ -128,7 +128,7 @@ const setWidth = (digit,n=5)=>{
 } 
 
 //对数据进行科学转换
-const sciNotation = (digit) => {
+export const sciNotation = (digit) => {
   let ret = 0;
   // > 10^5 记为 1.234567e5
   if(Math.abs(digit) > Math.pow(10,5)){
