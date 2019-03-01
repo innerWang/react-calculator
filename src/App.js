@@ -19,6 +19,7 @@ class App extends Component {
 
   componentDidMount(){
     const activeLink = window.location.pathname;
+    console.log(activeLink)
     document.querySelectorAll('.cmode').forEach((node)=>{
       if(node.classList.contains(activeLink.replace(/^\//,''))){
         node.classList.add('active');
@@ -41,9 +42,9 @@ class App extends Component {
                 <Link to={`/science`}><button className="science cmode" onClick={this.onclick}>科学</button></Link>
               </div>
               <Switch>
-                <Route path={`/normal`}   component={Keyboards.Normal} />            
-                <Redirect path={`/`} exact={true} to={`/normal`} />
-                <Redirect path={`/science`} exact={true} to={`/normal`} />
+                <Route path={`/normal/`}   component={Keyboards.Normal} />            
+                <Redirect path={`/`} exact={true} to={`/normal/`} />
+                <Redirect path={`/science/`} exact={true} to={`/normal/`} />
               </Switch>
             </div>
           </Router>
