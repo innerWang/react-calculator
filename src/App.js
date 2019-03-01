@@ -35,14 +35,14 @@ class App extends Component {
           <Router>
             <div>
               <div className="mode">
-                <Link to={`${process.env.PUBLIC_URL}/normal`}><button className="normal cmode" onClick={this.onclick}>标准</button></Link>
+                <Link to={`/normal`}><button className="normal cmode" onClick={this.onclick}>标准</button></Link>
                 <span>|</span>
-                <Link to={`${process.env.PUBLIC_URL}/science`}><button className="science cmode" onClick={this.onclick}>科学</button></Link>
+                <Link to={`/science`}><button className="science cmode" onClick={this.onclick}>科学</button></Link>
               </div>
               <Switch>
-                <Route path={`${process.env.PUBLIC_URL}/normal`}   component={Keyboards.Normal} />            
-                <Redirect path={`${process.env.PUBLIC_URL}/`} exact={true} to={`${process.env.PUBLIC_URL}/normal`} />
-                <Redirect path={`${process.env.PUBLIC_URL}/science`} exact={true} to={`${process.env.PUBLIC_URL}/normal`} />
+                <Route path={`/normal`}   component={Keyboards.Normal} />            
+                <Redirect path={`/`} exact={true} to={`/normal`} />
+                <Redirect path={`/science`} exact={true} to={`/normal`} />
               </Switch>
             </div>
           </Router>

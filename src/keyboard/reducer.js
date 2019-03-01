@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes.js';
+import {calInFixExpression} from './Tools.js';
 
 const reducer = (state,action)=>{
   if(!state) return {str:[],result:'',lastOperatorIsEqual:false};
@@ -21,7 +22,7 @@ const reducer = (state,action)=>{
     }
     case  actionTypes.CLICK_MATH_OPERATOR:{
       let arr = state.str;
-      if(arr.length === 0){
+      if((arr.length === 0)&&(state.result ==='')){
         arr.push('0')
       }else if(state.result === ''){
         arr.pop();
@@ -66,10 +67,7 @@ const reducer = (state,action)=>{
           };
         }
         case 'equal':{
-          let temp = '0'
-          // 将 str 转为 后缀表达式
-          // 计算后缀表达式的值
-          // 赋值temp
+          let temp = calInFixExpression(state.str)
           return {
             ...state,
             str:[],
