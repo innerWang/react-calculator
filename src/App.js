@@ -33,7 +33,7 @@ class App extends Component {
         <div className="App">
           <header>简易计算器</header>
           <Panel/>
-          <Router>
+          <Router basename={`${process.env.PUBLIC_URL}`}>
             <div>
               <div className="mode">
                 <Link to={`/normal`}><button className="normal cmode" onClick={this.onclick}>标准</button></Link>
