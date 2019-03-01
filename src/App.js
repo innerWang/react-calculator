@@ -21,7 +21,7 @@ class App extends Component {
     const activeLink = window.location.hash;
     console.log(activeLink)
     document.querySelectorAll('.cmode').forEach((node)=>{
-      if(node.classList.contains(activeLink.match(/(normal)|(science)/) !== null)){
+      if(node.classList.contains(activeLink.replace(/^#\//,''))){
         node.classList.add('active');
       }
     })
