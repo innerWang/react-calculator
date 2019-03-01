@@ -24,6 +24,7 @@ class App extends Component {
         node.classList.add('active');
       }
     })
+    console.log(process.env)
   }
 
   render() {
